@@ -8,6 +8,7 @@ package alvaroweatherapp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 
 /**
  *
@@ -21,10 +22,15 @@ public class AlvaroWeatherApp {
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
 
-          
         Validations validate = new Validations();
+        DaysOfDailyForecast daysOfDailyForecast = new DaysOfDailyForecast();
+        
+        String insertedCity;
+        String insertedCountryCode;
+        String measureUnit;
+        String numberDays;
 
         boolean correctOption = false;
 
@@ -47,7 +53,17 @@ public class AlvaroWeatherApp {
                 // If the value is right checking what the user chosed 
                 switch (response) {
                     case "1":
-                        System.out.println("chosed 1");
+                        System.out.println("Insert the name of the city, please: ");
+                        insertedCity =  reader.readLine();
+                        System.out.println("Insert the country code, please: (Example: Spain - ES)");
+                        insertedCountryCode =  reader.readLine();
+                        System.out.println("Insert the units of measurement, please: "
+                                + "\n1. Default"
+                                + "\n2. Metric (Celsius)"
+                                + "\n3. Imperial (Fahrenheit)");
+                        measureUnit =  reader.readLine();
+                        System.out.println("-----------RESULT------------");
+                        System.out.println(daysOfDailyForecast.getCurrentWeather(insertedCity, insertedCountryCode, measureUnit));
                         break;
                     case "2":
                         System.out.println("chosed 2");
@@ -56,7 +72,7 @@ public class AlvaroWeatherApp {
                         System.out.println("chosed 3");
                         break;
                 }
-                // go out of the while
+                // Go out of the while
                 correctOption = true;
             } else {
                 // If the value is not right

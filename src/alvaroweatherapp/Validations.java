@@ -23,7 +23,7 @@ public class Validations {
      * @return 
      */
     public boolean checkOption(String option) {
-        Pattern pat = Pattern.compile("[0-3]");
+        Pattern pat = Pattern.compile("[1-3]");
         Matcher mat = pat.matcher(option);
         if (mat.matches()) {
             return true;
