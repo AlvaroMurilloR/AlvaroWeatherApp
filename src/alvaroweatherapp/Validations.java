@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class Validations {
 
     /**
-     * checkOption: This function ckecking if the user is inserting a correct value when he is selecting the app option.
+     * checkOption: This function ckeck if the user insert a correct value when he is selecting the app option.
      * 
      * @param option
      * @return 
@@ -25,11 +25,19 @@ public class Validations {
     public boolean checkOption(String option) {
         Pattern pat = Pattern.compile("[1-3]");
         Matcher mat = pat.matcher(option);
-        if (mat.matches()) {
-            return true;
-        } else {
-            return false;
-        }
+        return mat.matches();
     }
 
+    /**
+     * This function ckeck if the user insert a correct value when he is inserting the number of the days to know the weather
+     * 
+     * @param option
+     * @return 
+     */
+    public boolean checkNumDays(String option) {
+        Pattern pat = Pattern.compile("[1-5]");
+        Matcher mat = pat.matcher(option);
+        return mat.matches();
+    }
+    
 }
